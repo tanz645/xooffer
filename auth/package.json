@@ -11,6 +11,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "^2.5.5",
+    "email-verification": "^0.4.6",
     "express": "~4.14.0",
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.8.5",

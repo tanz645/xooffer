@@ -1,6 +1,9 @@
 var config = {
+  appSecret:'xooffer-u43-24',
+  tokenExpiry: '2 days', //in min
   accountType:{
-    basic:'Basic'
+    basic:'BASIC',
+    admin:'ADMIN'
   }
 }
 

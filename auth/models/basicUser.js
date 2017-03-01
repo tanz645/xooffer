@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var config = require('../config/config');
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
-// these values can be whatever you want - we're defaulting to a
+
 // max of 10 attempts, resulting in a 2 hour lock
 var MAX_LOGIN_ATTEMPTS = 10;
 var LOCK_TIME = 2 * 60 * 60 * 1000;
@@ -72,9 +72,9 @@ UserSchema.methods.incLoginAttempts = function(cb) {
             $unset: { lockUntil: 1 }
         }, cb);
     }
-    // otherwise we're incrementing
+    // otherwise incrementing
     var updates = { $inc: { loginAttempts: 1 } };
-    // lock the account if we've reached max attempts and it's not locked already
+    // lock the account if reached max attempts and it's not locked already
     if (this.loginAttempts + 1 >= MAX_LOGIN_ATTEMPTS && !this.isLocked) {
         updates.$set = { lockUntil: Date.now() + LOCK_TIME };
     }
@@ -136,5 +136,4 @@ UserSchema.statics.getAuthenticated = function(username, password,cb) {
 
 var User = mongoose.model('users', UserSchema);
 
-// make this available to our users in our Node applications
 module.exports = User;
