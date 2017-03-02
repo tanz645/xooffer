@@ -3,6 +3,14 @@ var router = express.Router();
 var basicUser = require('../models/basicUser');
 var utils = require('../utils/utils');
 var Token = require('../utils/token');
+var EmailVerification = require('../utils/emailVerification');
+var config = require('../config/config');
+
+/********************************
+  Initialize Email Verification
+*********************************/
+EmailVerification.configure();
+EmailVerification.generateTemporaryUserModel();
 
 /***************************
       Get User By ID
@@ -23,37 +31,129 @@ var Token = require('../utils/token');
 // })
 
 /***************************
-      Get User By username
+      Get User By Id
 ***************************/
-router.get('/user',Token.verifyToken,function(req,res,next){
+router.get('/user/:id',Token.verifyToken,function(req,res,next){
 
   var username = req.user.username;
+  var id = req.params.id;
+  var usertype = req.user.accountType;
 
   if(!username)
-    res.status(403).send(utils.generateErrorInfo('No username provided',403,null));
+    return res.status(403).send(utils.generateErrorInfo('No username provided',403,null));
 
+  if(!id)
+    return res.status(403).send(utils.generateErrorInfo('No username provided',403,null));
 
-  basicUser.findOne({'username': username },function(err,user){
+  basicUser.findOne({_id: id },function(err,user){
       if(err) {
         return res.status(500).send(utils.generateErrorInfo('Error getting user by name',500,null));
       }
 
-      user.password = null;
-      res.status(200).send(utils.generateSuccessInfo('Query successfull',200,user));
+      if(!user){
+        return res.status(403).send(utils.generateErrorInfo('No User Found',403,null));
+      }
+
+      if(user.username === username || usertype === config.accountType.admin){
+        res.send(utils.generateSuccessInfo('Query successfull',200,user));
+
+      }else{
+        return res.status(403).send(utils.generateErrorInfo('Not authorized to remove',403,null));
+      }
+  });
+
+});
+
+/***************************
+      Delete User
+***************************/
+router.delete('/user/:id',Token.verifyToken,function(req,res,next){
+
+  var id = req.params.id;
+  var usertype = req.user.accountType;
+  var username = req.user.username;
+
+  if(!id)
+    return res.status(403).send(utils.generateErrorInfo('No username provided',403,null));
+
+
+  basicUser.findOne({_id: id },function(err,user){
+      if(err) {
+        return res.status(500).send(utils.generateErrorInfo('Error getting user by name',500,null));
+      }
+
+      if(!user){
+        return res.status(403).send(utils.generateErrorInfo('No User Found',403,null));
+      }
+
+      if(user.username === username || usertype === config.accountType.admin){
+        basicUser.remove({_id:id},function(err,user){
+          if(err){
+            return res.status(403).send(utils.generateErrorInfo('Error removing User',403,null));
+          }
+
+          res.send(utils.generateSuccessInfo('Remove User, successfull',200,null));
+        })
+      }else{
+        return res.status(403).send(utils.generateErrorInfo('Not authorized to remove',403,null));
+      }
   })
 });
 
 /***************************
-  Check Username Existance
+        Update User
 ***************************/
+router.put('/user/:id',Token.verifyToken,function(req,res,next){
+
+  var id = req.params.id;
+
+  if(!id)
+    return res.status(403).send(utils.generateErrorInfo('No username provided',403,null));
+
+  var usertype = req.user.accountType;
+  var username = req.user.username;
+
+
+  basicUser.findOne({_id: id },function(err,user){
+      if(err) {
+        return res.status(500).send(utils.generateErrorInfo('Error getting user by name',500,null));
+      }
+
+      if(!user){
+        return res.status(403).send(utils.generateErrorInfo('No User Found',403,null));
+      }
+
+      if(user.username === username || usertype === config.accountType.admin){
+
+        // user.password = req.body.password;
+        // user.email = req.body.email;
+        user.gender = req.body.gender;
+        user.dateOfBirth = req.body.dateOfBirth;
+        user.country = req.body.country;
+        // user.favouriteBrands = req.body.favouriteBrands;
+        // user.favouriteCategories = req.body.favouriteCategories;
+        // user.favouriteKeyWords = req.body.favouriteKeyWords;
+        user.updated = Date.now();
+        user.save(function(err,data){
+          if(err)
+            return res.status(500).send(utils.generateErrorInfo('User information could not be updated'));
+
+          res.status(200).send(utils.generateSuccessInfo('User information updated succesfully',200,data));
+        })
+
+      }else{
+        return res.status(403).send(utils.generateErrorInfo('Not authorized to remove',403,null));
+      }
+  })
+});
 
 /***************************
       Get All User
 ***************************/
-router.get('/user/all',Token.verifyToken,Token.verifyAdmin,function(req,res,next){
+router.get('/user',Token.verifyToken,Token.verifyAdmin,function(req,res,next){
 
   basicUser.find({},function(err,users){
-    console.log(users);
+
       if(err) {
         return res.send(utils.generateErrorInfo('Server error gettin all user',500,err));
       }
@@ -64,7 +164,7 @@ router.get('/user/all',Token.verifyToken,Token.verifyAdmin,function(req,res,next
 
 
 /***************************
-      Save User
+      Register User
 ***************************/
 router.post('/user', function(req, res, next) {
 
@@ -74,27 +174,25 @@ router.post('/user', function(req, res, next) {
   BasicUser.password = req.body.password;
   BasicUser.email = req.body.email;
 
-  // BasicUser.gender = req.body.gender;
-  // BasicUser.dateOfBirth = req.body.dateOfBirth;
-  // BasicUser.country = req.body.country;
-  // BasicUser.active = req.body.active;
-  // BasicUser.favouriteBrands = req.body.favouriteBrands;
-  // BasicUser.favouriteCategories = req.body.favouriteCategories;
-  // BasicUser.favouriteKeyWords = req.body.favouriteKeyWords;
-  // BasicUser.accountType = req.body.accountType;
-  // BasicUser.created = req.body.password;
-  // BasicUser.updated = req.body.password;
-  // BasicUser.lastLogin = req.body.password;
-   // save the bear and check for errors
-
-  BasicUser.save(function(err,user) {
-    if (err){
-     return res.status(500).send(utils.generateErrorInfo('Error creating User',500));
-    }
-    user.password = null;
-    res.status(200).send(utils.generateSuccessInfo('New User Created',200,user));
+  basicUser.findOne({'username': req.body.username },function(err,user){
+     if(err) {
+       return res.status(500).send(utils.generateErrorInfo('Error getting user by name',500,null));
+     }
+     if(!user){
+       EmailVerification.createTemporaryUser(BasicUser,req.body.email,res);
+     }else{
+       return res.status(200).send(utils.generateErrorInfo('Username Already exists',200,null));
+     }
   });
+});
 
+/***************************
+      user accesses the link that is sent
+***************************/
+router.get('/user/email-verification/:URL', function(req, res) {
+  var url = req.params.URL;
+
+  EmailVerification.confirmTemporaryUser(url,res);
 });
 
 
@@ -117,6 +215,7 @@ router.post('/user/login', function(req, res, next) {
     if (user) {
       user.password = null;
       var token = Token.generateToken(user);
+
       res.status(200).send(utils.generateSuccessInfo('Login successfull',200,{token:token}));
     }
   })

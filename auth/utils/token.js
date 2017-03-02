@@ -27,9 +27,14 @@ var token = {
             if(err){
               res.status(403).send(utils.generateErrorInfo('Failed to authenticate token',403,null));
             }else{
-              user.password = null;
-              req.user = user;
-              next();
+              if(user){
+                user.password = null;
+                req.user = user;
+                next();
+              }else{
+                res.status(403).send(utils.generateErrorInfo('Failed to authenticate token',403,null));                
+              }
+
             }
 
           })

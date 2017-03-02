@@ -12,7 +12,7 @@ var LOCK_TIME = 2 * 60 * 60 * 1000;
 var UserSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  email: { type: String, required: true },
+  email: { type: String, required: true ,unique: true},
   gender: String,
   dateOfBirth: Date,
   country: String,
@@ -24,7 +24,7 @@ var UserSchema = new Schema({
   favouriteKeyWords:[],
   accountType:{type: String, default:config.accountType.basic},
   created: {type: Date, default: Date.now},
-  updated:Date,
+  updated: {type: Date, default: Date.now},
   lastLogin:Date
 });
 
