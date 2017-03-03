@@ -30,8 +30,15 @@ app.use('/', index);
 /*******************************
           API ROUTES
 *******************************/
+var studio = require('studio');
+var studioCluster = require('studio-cluster');
+studio.use(studioCluster({rpcPort:8001}));
 
-//need security check
+// Studio.use(studioCluster());
+
+studio(function test1(){
+    return 'test';
+});
 
 app.use(utils.checkRequest)
 app.use('/api',user);

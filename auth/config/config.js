@@ -1,5 +1,5 @@
 var config = {
-  appSecret:'xooffer-u43-24',
+  appSecret:'xooffer-u43-age24',
   address:'http://localhost:3005',
   emailpassword:'01711401197',
   emailId:'xooffer@gmail.com',
