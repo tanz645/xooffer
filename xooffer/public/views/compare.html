@@ -1,0 +1,65 @@
+<div ng-include="'views/commons/header.html'"></div>
+<div ng-include="'views/commons/categoryMenu.html'"></div>
+<section class="compare-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>Items: 8</h3>
+        <p>
+          Drag items to sort
+        </p>
+      </div>
+      <div class="col-sm-12">
+        <ul id="sortable" class="nav">
+          <li class="card-detailed ui-state-default" ng-repeat="i in num">
+            <div class="card-detailed-head">
+              <h4>40% Off in every item</h4>
+            </div>
+            <div class="card-detailed-poster">
+              <img src="{{'images/'+i+'.jpg'}}"/>
+            </div>
+            <div class="card-detailed-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <img src="{{'images/brands/'+brands[$index]}}" />
+                </div>
+                <div class="col-sm-6">
+                  <p>
+                    <strong>Loreal</strong>
+                  </p>
+                  <p>
+                    lorem ipsum dolor sit masd las hakljd hlajd hlajsd
+                  </p>
+                </div>
+                <div class="col-sm-12">
+                  <strong>Product Details</strong>
+                  <ul class="product-details nav">
+                    <li>
+                      lorem ipsum dolor sit amont asdo fasda asdasdas asdasd asd
+                    </li>
+                    <li>
+                      lorem ipsum dolor sit amont asdasdasd asdasd o fasd
+                    </li>
+                    <li>
+                      lorem ipsum dolor sit amont asdo fasd
+                    </li>
+                    <li>
+                      lorem ipsum dolor sit amont asdo asdasd fasd
+                    </li>
+                    <li>
+                      lorem ipsum dolor sit amont asdo fasd
+                    </li>
+                    <li>
+                      lorem ipsum dolor sit amont asdasasasd o fasd
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+<div ng-include="'views/commons/header.html'"></div>
+<div ng-include="'views/commons/categoryMenu.html'"></div>
+<section class="section" id="key-word-search-box">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <input type="text" id="key-word" class="key-word"  placeholder="search anything"/>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="main-body" class="section main-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 padding-none">
+        <div id="google-map-wrap" class="google-map-wrap">
+            <!-- <div class="hide-map-btn">
+              <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </div> -->
+            <div id="map"></div>
+        </div>
+      </div><!-- end google map -->
+      <div class="col-sm-6 padding-none overflowOverlay cards-box">
+        <div class="" ng-repeat="i in num">
+          <div class="card">
+            <nav class="fabContainer"  >
+
+              <a href="#" class="buttons"></a>
+
+              <a href="#" class="buttons"></a>
+
+              <a href="#" class="buttons"></a>
+
+              <a class="buttons hover-btn" href=""><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+
+            </nav>
+            <div class="image">
+              <img src="{{'images/'+i+'.jpg'}}" width="100%">
+            </div>
+
+            <div class="text">
+              <h3>40% Off For Every Item amer lsad fasd asd</h3>
+              <div class="brand clearfix">
+                <img class="pull-left" src="{{'images/brands/'+brands[$index]}}"/>
+              </div>
+              <div class=" offer-end">
+                <i class="fa fa-calendar-times-o" aria-hidden="true"></i> Offer Ending: 12/09/2017
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- end card box -->
+    </div>
+  </div>
+
+</section>

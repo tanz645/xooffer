@@ -1,0 +1,124 @@
+<div ng-include="'views/commons/header.html'"></div>
+<div ng-include="'views/commons/categoryMenu.html'"></div>
+<section class="topcharts-section margin-top-20" id="xof-picked">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 xof-picked">
+        <div class="title">
+            <p><i class="fa fa-heart" aria-hidden="true"></i> <i>Hand Picked By Xooffer</i></p>
+        </div>
+        <div class="xof-pick-main xof-pick-item">
+          <img src="images/6.jpg" alt="">
+        </div>
+        <div class="xof-pick-second xof-pick-item">
+          <img src="images/7.jpg" alt="">
+        </div>
+        <div class="xof-pick-3a xof-pick-item">
+          <img src="images/5.jpg" alt="">
+        </div>
+        <div class="xof-pick-3b xof-pick-item">
+          <img src="images/8.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topcharts-section margin-top-20" id="premium-brands">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="title">
+            <p><i class="fa fa-trophy" aria-hidden="true"></i> <i>Premium Brands</i></p>
+        </div>
+        <div class="button-group premium-brands-filter-button-group">
+          <button class="xo-btn ripple active" data-filter="*">Show all</button>
+          <button class="xo-btn ripple" data-filter=".woFa">Women's Fashion</button>
+          <button class="xo-btn ripple" data-filter=".menFa">Men's Fashion</button>
+          <button class="xo-btn ripple" data-filter=".foodRes">Food/Restaurent</button>
+          <button class="xo-btn ripple" data-filter=".elec">Electronics/Gadgets</button>
+          <button class="xo-btn ripple" data-filter=".med">Medical</button>
+          <button class="xo-btn ripple" data-filter=".edu">Education</button>
+          <button class="xo-btn ripple" data-filter=".autoMob">Cars/Automobile</button>
+          <button class="xo-btn ripple" data-filter=".itTelco">IT/Telecommunication</button>
+          <button class="xo-btn ripple" data-filter=".home">Home and Living</button>
+          <button class="xo-btn ripple" data-filter=".health">Health and Beauty</button>
+          <button class="xo-btn ripple" data-filter=".traLei">Travel and leisure</button>
+        </div>
+        <div class="premium-brands-grid margin-top-20">
+          <div class="premium-brand-grid-item {{i.class}}" ng-repeat="i in brands">
+            <div class="premium-brand-grid-item-card">
+              <div class="body">
+                <img ng-src="{{'images/brands/'+i.img}}"/>
+              </div>
+            </div><!-- end card -->
+          </div>
+          <div ng-init="loadEnd()"></div>
+        </div><!-- end premium-brands-grid-->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topcharts-section margin-top-20" id="popular-deals">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="title">
+          <p><i class="fa fa-shopping-bag" aria-hidden="true"></i> <i>Most Popular Deals</i></p>
+        </div>
+        <div class="button-group popular-deals-filter-button-group">
+          <button class="xo-btn ripple active" data-filter="*">Show all</button>
+          <button class="xo-btn ripple" data-filter=".woFa">Women's Fashion</button>
+          <button class="xo-btn ripple" data-filter=".menFa">Men's Fashion</button>
+          <button class="xo-btn ripple" data-filter=".foodRes">Food/Restaurent</button>
+          <button class="xo-btn ripple" data-filter=".elec">Electronics/Gadgets</button>
+          <button class="xo-btn ripple" data-filter=".med">Medical</button>
+          <button class="xo-btn ripple" data-filter=".edu">Education</button>
+          <button class="xo-btn ripple" data-filter=".autoMob">Cars/Automobile</button>
+          <button class="xo-btn ripple" data-filter=".itTelco">IT/Telecommunication</button>
+          <button class="xo-btn ripple" data-filter=".home">Home and Living</button>
+          <button class="xo-btn ripple" data-filter=".health">Health and Beauty</button>
+          <button class="xo-btn ripple" data-filter=".traLei">Travel and leisure</button>
+        </div>
+        <div class="popular-deals-grid margin-top-20">
+          <div class="popular-deals-grid-item {{i.class}}" ng-repeat="i in deals">
+            <div class="deals-card">
+              <div class="deals-body">
+                <img src="images/4.jpg" class="" />
+                <div class="">
+                  <h4>40% off in every item at Cats Eye</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-init="loadEnd()"></div>
+        </div><!-- end premium-brands-grid-->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topcharts-section margin-top-20" id="mall-visit">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="title">
+          <p><i class="fa fa-building-o" aria-hidden="true"></i> <i>Mall To Visit</i></p>
+        </div>
+        <div class="mall-visit-item mall-visit-main" ng-repeat="i in malls">
+          <img src="images/shop1.jpg" />
+          <div class="details">
+            <h4>Boshundhara Shopping Complex</h4>
+            <p>
+              <i class="fa fa-map-marker" aria-hidden="true"></i> Panthopath, Dhaka
+            </p>
+            <p>
+              <i class="fa fa-bookmark" aria-hidden="true"></i> Offers: 232
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

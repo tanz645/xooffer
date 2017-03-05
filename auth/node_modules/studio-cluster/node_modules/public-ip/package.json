@@ -1,0 +1,83 @@
+{
+  "name": "public-ip",
+  "version": "1.2.0",
+  "description": "Get your public IP address - very fast!",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sindresorhus/public-ip"
+  },
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "bin": {
+    "public-ip": "cli.js"
+  },
+  "preferGlobal": true,
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    "bin",
+    "ip",
+    "ipv4",
+    "ipv6",
+    "address",
+    "external",
+    "public",
+    "machine",
+    "fast",
+    "opendns",
+    "dns"
+  ],
+  "dependencies": {
+    "dns-socket": "^1.0.0",
+    "meow": "^3.3.0"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "is-ip": "^1.0.0",
+    "xo": "*"
+  },
+  "gitHead": "5fbd63b74d630c3386fe83b743068012d975f41a",
+  "bugs": {
+    "url": "https://github.com/sindresorhus/public-ip/issues"
+  },
+  "homepage": "https://github.com/sindresorhus/public-ip",
+  "_id": "public-ip@1.2.0",
+  "_shasum": "d4b074b0554211c0a4b2ac754961ff0f53afa584",
+  "_from": "public-ip@>=1.2.0 <2.0.0",
+  "_npmVersion": "2.14.12",
+  "_nodeVersion": "4.3.0",
+  "_npmUser": {
+    "name": "sindresorhus",
+    "email": "sindresorhus@gmail.com"
+  },
+  "dist": {
+    "shasum": "d4b074b0554211c0a4b2ac754961ff0f53afa584",
+    "tarball": "https://registry.npmjs.org/public-ip/-/public-ip-1.2.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "sindresorhus",
+      "email": "sindresorhus@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-6-west.internal.npmjs.com",
+    "tmp": "tmp/public-ip-1.2.0.tgz_1456252534152_0.4424065975472331"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/public-ip/-/public-ip-1.2.0.tgz"
+}

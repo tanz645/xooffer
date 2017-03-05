@@ -1,0 +1,35 @@
+{
+  "name": "css-ripple-effect",
+  "description": "Pure CSS implementation of Android Material design \"ripple\" animation on click event",
+  "main": "src/ripple.less",
+  "authors": [
+    "Mladen Plavsic <mladen.plavsic@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "material",
+    "ripple",
+    "circle",
+    "effect",
+    "click",
+    "animation"
+  ],
+  "homepage": "https://github.com/mladenplavsic/css-ripple-effect",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "1.0.5",
+  "_release": "1.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.5",
+    "commit": "7165b20f841423e5ca0bb9b9cee8c0bb47c212f5"
+  },
+  "_source": "https://github.com/mladenplavsic/css-ripple-effect.git",
+  "_target": "^1.0.5",
+  "_originalSource": "css-ripple-effect"
+}

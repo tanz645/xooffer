@@ -1,0 +1,129 @@
+<div class="title">
+  <h4>Create New Offer</h4>
+</div>
+<div class="body col-sm-6">
+  <form name="offerForm">
+    <div class="row">
+      <div class="col-sm-4">
+        <md-input-container class="fullWidth">
+          <label>Title</label>
+          <input required name="title" ng-model="offer.title">
+          <div ng-messages="offerForm.title.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div class="col-sm-4">
+        <md-input-container class="fullWidth">
+          <label>Country</label>
+          <input required name="country" ng-model="offer.country">
+          <div ng-messages="offerForm.country.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div class="col-sm-4">
+        <md-input-container class="fullWidth">
+          <label>District</label>
+          <input required name="district" ng-model="offer.district">
+          <div ng-messages="offerForm.district.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <md-input-container class="fullWidth">
+          <label>Outlets</label>
+          <md-select name="outlet" ng-model="offer.outlet" required>
+              <md-option value="demo1">demo1</md-option>
+              <md-option value="demo2">demo2</md-option>
+            </md-select>
+          <div ng-messages="offerForm.outlet.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div class="col-sm-4">
+        <md-input-container class="fullWidth">
+          <label>Shopping Mall</label>
+          <md-select name="shoppingMall" ng-model="offer.shoppingMall" required>
+              <md-option value="demo1">demo1</md-option>
+              <md-option value="demo2">demo2</md-option>
+            </md-select>
+          <div ng-messages="offerForm.shoppingMall.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div class="col-sm-4">
+        <md-input-container class="fullWidth">
+          <label>Primary Category</label>
+          <md-select name="primaryCategory" ng-model="offer.primaryCategory" required>
+              <md-option value="demo1">demo1</md-option>
+              <md-option value="demo2">demo2</md-option>
+            </md-select>
+          <div ng-messages="offerForm.primaryCategory.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <md-input-container class="fullWidth">
+          <label>Sub Category</label>
+          <md-select name="subCategory" ng-model="offer.subCategory" required>
+              <md-option value="demo1">demo1</md-option>
+              <md-option value="demo2">demo2</md-option>
+            </md-select>
+          <div ng-messages="offerForm.subCategory.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div class="col-sm-8">
+        <md-input-container class="fullWidth">
+          <label>Offer Description</label>
+          <input md-maxlength="100" required md-no-asterisk name="description" ng-model="offer.description">
+          <div ng-messages="offerForm.description.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <md-input-container class="fullWidth">
+          <label>Product Details</label>
+          <input name="district" ng-model="productDetails.i" ng-repeat="i in productDetails">
+        </md-input-container>
+      </div>
+      <div class="col-sm-6">
+        <md-button class="ripple md-primary xo-btn"> + Add</md-button>
+        <md-button class="ripple md-warn xo-btn"> - Remove</md-button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <md-input-container class="fullWidth">
+          <label>Offer Start Date</label>
+          <md-datepicker ng-model="offer.start" md-placeholder="Enter date"></md-datepicker>
+        </md-input-container>
+      </div>
+      <div class="col-sm-4">
+        <md-input-container class="fullWidth">
+          <label>Offer End Date</label>
+          <md-datepicker ng-model="offer.end" md-placeholder="Enter date"></md-datepicker>
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      
+    </div>
+  </form>
+</div>
+<div class="col-sm-6">
+  <div id="vendor-dashboard-new-offer-map"></div>
+</div>

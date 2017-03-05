@@ -1,0 +1,32 @@
+<div ng-include="'views/commons/header.html'"></div>
+<div ng-include="'views/commons/categoryMenu.html'"></div>
+<section class="login-page-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 login-form">
+        <form name="userForm">
+          <md-input-container class="md-block">
+            <label>User Email</label>
+            <input type="text" required md-no-asterisk name="email" ng-model="user.email">
+            <div ng-messages="userForm.email.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>User Password</label>
+            <input type="password" required md-no-asterisk name="password" ng-model="user.password">
+            <div ng-messages="userForm.password.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+            </div>
+          </md-input-container>
+          <button class="xo-btn ripple">Login</button>
+        </form>
+        <p class="additional-links">
+          <a href="#/register">Not a user? Register Now</a> | <a href="#">Forget your password?</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
