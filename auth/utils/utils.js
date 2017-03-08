@@ -5,10 +5,10 @@ var utils = {
     next();
   },
   generateErrorInfo:function(msg,status,err){
-    return {message:msg,status:status,error:err}
+    return {class:'error',message:msg,status:status,error:err}
   },
   generateSuccessInfo:function(msg,status,data){
-    return {message:msg,status:status,data:data}
+    return {class:'success',message:msg,status:status,data:data}
   }
 }
 

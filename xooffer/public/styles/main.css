@@ -109,6 +109,23 @@ h1, h2, h3, h4, h5, h6{
 .fullWidth{
   width: 100%;
 }
+.response-message{
+  padding: 10px;
+  background: white;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.5);
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.response-message p{
+  margin:0;
+}
+.response-message.success{
+  color: #44ac0b;
+}
+.response-message.error{
+  color: red;
+}
 /*Bootstrap, Overrites
 =================*/
 .xo-nav>li>a {
@@ -852,11 +869,11 @@ background: linear-gradient(to right, rgb(46, 160, 101), rgb(68, 172, 11), rgb(0
 --------------------------------------------------------------*/
 .login-form{
   margin-top: 100px;
-    background: #02C343;
-    color: white;
-    padding: 100px;
-    /*border: 1px solid rgb(0, 196, 69);*/
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background: #02C343;
+  color: white;
+  padding: 50px 100px 100px 100px;
+  /*border: 1px solid rgb(0, 196, 69);*/
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 .login-form md-input-container label{
   color: white;

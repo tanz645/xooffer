@@ -1,5 +1,5 @@
 'user strict';
-app.controller('RegisterPageController', function($scope,authService,$q) {
+app.controller('RegisterPageController', function($scope,authService,$q,toastService) {
 
   var _$ = $scope;
   _$.submit = function(isValid) {
@@ -8,8 +8,8 @@ app.controller('RegisterPageController', function($scope,authService,$q) {
 
       authService.login(_$.user).then(function(data){
           console.log(data)
+          // toastService(data,1000,data.class);
       });
-      
 
     }
 

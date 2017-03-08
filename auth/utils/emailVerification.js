@@ -44,15 +44,13 @@ var EmailVerification = {
   createTemporaryUser: function(newUser,email,res){
     nev.createTempUser(newUser, function(err, existingPersistentUser, newTempUser) {
          if (err) {
-           return res.status(403).send('ERROR: creating temp user FAILED');
+           return res.status(403).send(utils.generateErrorInfo('Creating temp user FAILED',403,null));
          }
 
          // user already exists in persistent collection
 
          if (existingPersistentUser) {
-           return res.json({
-             msg: 'You have already signed up and confirmed your account. Did you forget your password?'
-           });
+           return res.send(utils.generateSuccessInfo('You have already signed up and confirmed your account',200,null));
          }
 
          console.log("----------",newTempUser)
@@ -62,8 +60,8 @@ var EmailVerification = {
 
            nev.sendVerificationEmail(email, URL, function(err, info) {
              if (err) {
-               console.log(err)
-               return res.status(403).send('ERROR: sending verification email FAILED');
+               
+               return res.status(403).send(utils.generateErrorInfo('Sending verification email FAILED',403,null));
              }
              res.json({
                msg: 'An email has been sent to you. Please check it to verify your account.',
