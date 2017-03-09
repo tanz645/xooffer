@@ -1,5 +1,6 @@
 var basicUser = require('../models/basicUser');
 var config = require('../config/config');
+var utils = require('../utils/utils');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var nev = require('email-verification')(mongoose);
@@ -60,38 +61,33 @@ var EmailVerification = {
 
            nev.sendVerificationEmail(email, URL, function(err, info) {
              if (err) {
-               
+
                return res.status(403).send(utils.generateErrorInfo('Sending verification email FAILED',403,null));
              }
-             res.json({
-               msg: 'An email has been sent to you. Please check it to verify your account.',
-               info: info
-             });
+             return res.send(utils.generateSuccessInfo('An Email is sent to you, please check your mailbox.',200,null));
            });
 
          // user already exists in temporary collection!
          } else {
-           res.json({
-             msg: 'You have already signed up. Please check your email to verify your account.'
-           });
+
+           return res.send(utils.generateSuccessInfo('You have already signed up. Please check your email to verify your account.',200,null));
          }
 
 
     });
   },
-  resendVerificationEmail: function(){
+  resendVerificationEmail: function(email){
     nev.resendVerificationEmail(email, function(err, userFound) {
         if (err) {
-          return res.status(404).send('ERROR: resending verification email FAILED');
+
+          return res.status(403).send(utils.generateErrorInfo('resending verification email FAILED',403,null));
         }
         if (userFound) {
-          res.json({
-            msg: 'An email has been sent to you, yet again. Please check it to verify your account.'
-          });
+
+          return res.send(utils.generateSuccessInfo('An email has been sent to you, yet again. Please check it to verify your account.',200,null));
         } else {
-          res.json({
-            msg: 'Your verification code has expired. Please sign up again.'
-          });
+
+          return res.status(403).send(utils.generateErrorInfo('Your verification code has expired. Please sign up again.',403,null));
         }
     });
   },
@@ -100,15 +96,14 @@ var EmailVerification = {
       if (user) {
         nev.sendConfirmationEmail(user.email, function(err, info) {
           if (err) {
-            return res.status(404).send('ERROR: sending confirmation email FAILED');
+            return res.status(403).send(utils.generateErrorInfo('Sending confirmation email FAILED',403,null));
           }
-          res.json({
-            msg: 'CONFIRMED!',
-            info: info
-          });
+          return res.send(utils.generateSuccessInfo('User Confirmed',200,info));
+
         });
       } else {
-        return res.status(404).send('ERROR: confirming temp user FAILED');
+
+        return res.status(403).send(utils.generateErrorInfo('Confirming temp user FAILED',403,null));
       }
     });
   }

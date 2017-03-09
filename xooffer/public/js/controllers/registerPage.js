@@ -8,7 +8,7 @@ app.controller('RegisterPageController', function($scope,authService,$q,toastSer
 
       authService.login(_$.user).then(function(data){
           console.log(data)
-          // toastService(data,1000,data.class);
+      toastService.show(data.data.message,null,data.data.class);
       });
 
     }

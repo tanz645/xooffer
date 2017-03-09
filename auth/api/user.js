@@ -186,9 +186,9 @@ router.post('/user', function(req, res, next) {
   });
 });
 
-/***************************
+/*********************************************
       user accesses the link that is sent
-***************************/
+*********************************************/
 router.get('/user/email-verification/:URL', function(req, res) {
   var url = req.params.URL;
 
