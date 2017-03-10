@@ -76,7 +76,7 @@ var EmailVerification = {
 
     });
   },
-  resendVerificationEmail: function(email){
+  resendVerificationEmail: function(email,res){
     nev.resendVerificationEmail(email, function(err, userFound) {
         if (err) {
 

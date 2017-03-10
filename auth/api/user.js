@@ -221,7 +221,16 @@ router.post('/user/login', function(req, res, next) {
   })
 
 });
+router.post('/user/login/resend', function(req, res, next) {
 
+  if(req.body.email){
+      EmailVerification.resendVerificationEmail(req.body.email,res)
+  }else{
+    res.status(403).send(utils.generateErrorInfo('No email address found',403,null));
+  }
+
+
+});
 
 
 module.exports = router;

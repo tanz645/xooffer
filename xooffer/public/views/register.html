@@ -12,7 +12,7 @@
         <form name="userForm" ng-submit="submit(userForm.$valid)">
           <md-input-container class="md-block">
             <label>Username</label>
-            <input type="text" minlength="6" maxlength="40" max required name="username" ng-model="user.username">
+            <input type="text" minlength="2" maxlength="40" max required name="username" ng-model="user.username">
             <div ng-messages="userForm.username.$error">
               <div ng-message="required">This is required.</div>
               <div ng-message="minlength">Minimum length is 3</div>
@@ -41,7 +41,7 @@
           <button class="xo-btn ripple" >Register</button>
         </form>
         <p class="additional-links">
-          <a href="#">Already an user? Login Now</a> | <a href="#">Didn't get any email? Resend</a>
+          <a href="#/login">Already an user? Login Now</a> | <a href="" ng-click="resendEmail(userForm.$valid)" >Didn't get any email? Resend</a>
         </p>
       </div>
     </div>

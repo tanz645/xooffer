@@ -1,3 +1,4 @@
+
 var app = angular.module("app", ['ngRoute','slick','ngAnimate','ngAria','ngMessages','ngMaterial']);
 
 app.config(function($routeProvider,$locationProvider) {
@@ -51,4 +52,5 @@ app.config(function($routeProvider,$locationProvider) {
     });
 
     $locationProvider.hashPrefix('');
+
 });

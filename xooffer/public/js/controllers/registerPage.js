@@ -8,11 +8,22 @@ app.controller('RegisterPageController', function($scope,authService,$q,toastSer
 
       authService.login(_$.user).then(function(data){
           console.log(data)
-      toastService.show(data.data.message,null,data.data.class);
+          toastService.show(data.data.message,null,data.data.class);
       });
 
     }
 
+  }
+  _$.resendEmail = function(isValid){
+    console.log(isValid)
+    if(isValid){
+
+      authService.resendEmail(_$.user.email).then(function(data){
+          console.log(data)
+          toastService.show(data.data.message,null,data.data.class);
+      });
+
+    }
   }
 
 

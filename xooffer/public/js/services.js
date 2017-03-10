@@ -18,8 +18,23 @@ app.factory("authService", function($http, $q, $window,Config) {
 
     return call;
   }
+  function resendEmail(email){
+    call = $http.post(Config.authDomain+'/api/user/login/resend',{
+      email: email
+    }).then(function(res){
+
+      return res;
+    },function(err){
+
+      return err;
+
+    });
+
+    return call;
+  }
 
   return {
-    login: login
+    login: login,
+    resendEmail: resendEmail
   };
 });
