@@ -6,15 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var utils = require('./utils/utils');
-
-
-var studio = require('studio');
-var studioCluster = require('studio-cluster');
-studio.use(studioCluster({rpcPort:8002}));
+var config = require('./config/config');
 
 mongoose.connect('mongodb://localhost/xooffer');
 
 var index = require('./routes/index');
+var offer = require('./api/offer');
 var app = express();
 
 // view engine setup
@@ -28,19 +25,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var test1 = studio('test1');
-studio(function test2(){
-    //call remote service
-    return test1().then(function(message){
-        console.log(message);
-    }).catch(function(err){
-        console.error(err);
-    });
-});
-
-var _test2 =  studio('test2');
-
-setInterval(_test2,1500);
+// var test1 = studio('test1');
+// studio(function test2(){
+//     //call remote service
+//     return test1().then(function(message){
+//         console.log(message);
+//     }).catch(function(err){
+//         console.error(err);
+//     });
+// });
+//
+// var _test2 =  studio('test2');
+//
+// setInterval(_test2,1500);
 app.use('/', index);
 
 /*******************************
@@ -48,7 +45,7 @@ app.use('/', index);
 *******************************/
 
 app.use(utils.checkRequest)
-// app.use('/api',user);
+app.use('/api',offer);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

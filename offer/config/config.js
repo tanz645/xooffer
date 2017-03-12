@@ -1,6 +1,7 @@
 var config = {
   appSecret:'xooffer-u43-24',
   address:'http://localhost:3010',
+  elasticsearchHost:'localhost:9200',
   accountType:{
     basic:'BASIC',
     admin:'ADMIN'
