@@ -1,26 +1,25 @@
 'user strict';
-app.controller('RegisterPageController', function($scope,authService,$q,toastService) {
+app.controller('RegisterPageController', function($scope,AuthService,$q,ToastService) {
 
-  var _$ = $scope;
+  var  _$ = $scope;
   _$.submit = function(isValid) {
 
     if(isValid){
 
-      authService.login(_$.user).then(function(data){
+      AuthService.register(_$.user).then(function(data){
           console.log(data)
-          toastService.show(data.data.message,null,data.data.class);
+          ToastService.show(data.data.message,null,data.data.class);
       });
 
     }
 
   }
   _$.resendEmail = function(isValid){
-    console.log(isValid)
     if(isValid){
 
-      authService.resendEmail(_$.user.email).then(function(data){
+      AuthService.resendEmail(_$.user.email).then(function(data){
           console.log(data)
-          toastService.show(data.data.message,null,data.data.class);
+          ToastService.show(data.data.message,null,data.data.class);
       });
 
     }

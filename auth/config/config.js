@@ -6,7 +6,8 @@ var config = {
   tokenExpiry: '2 days', //in min
   accountType:{
     basic:'BASIC',
-    admin:'ADMIN'
+    admin:'ADMIN',
+    vendor:'VENDOR'
   },
   api:{
     auth:{

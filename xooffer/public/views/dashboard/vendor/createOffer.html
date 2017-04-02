@@ -1,5 +1,5 @@
 <div class="title">
-  <h4>Create New Offer</h4>
+  <h2>Create New Offer</h2>
 </div>
 <div class="body col-sm-6">
   <form name="offerForm">
@@ -13,50 +13,61 @@
           </div>
         </md-input-container>
       </div>
-      <div class="col-sm-4">
-        <md-input-container class="fullWidth">
-          <label>Country</label>
-          <input required name="country" ng-model="offer.country">
-          <div ng-messages="offerForm.country.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
-        </md-input-container>
+    </div>
+    <div ng-repeat="i in outlets" class="row">
+      <div class="row">
+        <div class="col-sm-4">
+          <md-input-container class="fullWidth">
+            <label>Country</label>
+            <input required name="country" ng-model="i.country">
+            <div ng-messages="i.country.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div class="col-sm-4">
+          <md-input-container class="fullWidth">
+            <label>Full Address</label>
+            <input required name="address" ng-model="i.address">
+            <div ng-messages="i.address.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div class="col-sm-4">
+          <md-input-container class="fullWidth">
+            <label>Shopping Mall</label>
+            <md-select name="shoppingMall" ng-model="i.shoppingMall" required>
+                <md-option value="demo1">demo1</md-option>
+                <md-option value="demo2">demo2</md-option>
+              </md-select>
+            <div ng-messages="i.shoppingMall.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        </div>
       </div>
-      <div class="col-sm-4">
-        <md-input-container class="fullWidth">
-          <label>District</label>
-          <input required name="district" ng-model="offer.district">
-          <div ng-messages="offerForm.district.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
-        </md-input-container>
+      <div class="row">
+        <div class="col-sm-4">
+          <md-input-container class="fullWidth">
+            <label>Area</label>
+            <input required name="area" ng-model="i.area">
+            <div ng-messages="i.address.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4">
-        <md-input-container class="fullWidth">
-          <label>Outlets</label>
-          <md-select name="outlet" ng-model="offer.outlet" required>
-              <md-option value="demo1">demo1</md-option>
-              <md-option value="demo2">demo2</md-option>
-            </md-select>
-          <div ng-messages="offerForm.outlet.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
-        </md-input-container>
+      <div class="col-sm-12">
+        <div class="col-sm-6">
+          <md-button class="ripple xo-btn" ng-click="addLocation()"> + Add</md-button>
+          <md-button class="ripple md-warn xo-btn" ng-click="removeLocation()"> - Remove</md-button>
+        </div>
       </div>
-      <div class="col-sm-4">
-        <md-input-container class="fullWidth">
-          <label>Shopping Mall</label>
-          <md-select name="shoppingMall" ng-model="offer.shoppingMall" required>
-              <md-option value="demo1">demo1</md-option>
-              <md-option value="demo2">demo2</md-option>
-            </md-select>
-          <div ng-messages="offerForm.shoppingMall.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
-        </md-input-container>
-      </div>
+    </div>
+    <div class="row">
       <div class="col-sm-4">
         <md-input-container class="fullWidth">
           <label>Primary Category</label>
@@ -101,7 +112,7 @@
         </md-input-container>
       </div>
       <div class="col-sm-6">
-        <md-button class="ripple md-primary xo-btn"> + Add</md-button>
+        <md-button class="ripple xo-btn"> + Add</md-button>
         <md-button class="ripple md-warn xo-btn"> - Remove</md-button>
       </div>
     </div>
@@ -120,7 +131,9 @@
       </div>
     </div>
     <div class="row">
-      
+      <div class="col-sm-12">
+        <md-button class="ripple xo-btn primary"> Save Offer</md-button>
+      </div>
     </div>
   </form>
 </div>

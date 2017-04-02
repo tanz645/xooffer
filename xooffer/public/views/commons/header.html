@@ -37,11 +37,17 @@
                 <div class="mod-user">
                     <img class="img-circle" src="images/user.png" alt=":|">
                     <ul class="nav xo-nav dropdown">
-                      <li>
+                      <li ng-hide="isAuthenticated">
                         <a href="#/login">Log in</a>
                       </li>
-                      <li>
+                      <li ng-hide="isAuthenticated">
                         <a href="#/register">Register</a>
+                      </li>
+                      <li ng-show="isAuthenticated">
+                        <a href="#/dashboard">Dashboard</a>
+                      </li>
+                      <li ng-show="isAuthenticated">
+                        <a href="#/logout">Logout</a>
                       </li>
                     </ul>
                 </div>

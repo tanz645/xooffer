@@ -97,11 +97,14 @@ h1, h2, h3, h4, h5, h6{
   background: #CFD8DC;
   border: none;
   border-radius: 2px;
-  padding: 5px 10px;
+  padding: 0px 10px;
   color: #263238;
   box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
   transition: all 0.5s;
   outline: none;
+}
+.xo-btn.primary{
+  color: #44ac0b;
 }
 .xo-btn:hover{
   box-shadow: 0px 2px 6px rgba(0,0,0,0.5);
@@ -925,7 +928,7 @@ md-select.md-default-theme:not([disabled]):focus .md-select-value, md-select:not
 .dashboard-user-page .side-menu{
   position: fixed;
   left:0;
-  top:103px;
+  top:101px;
   width: 200px;
   background: linear-gradient(to right, #2ea065 , #44ac0b, #00c445);
   height: 95%;
@@ -935,9 +938,12 @@ md-select.md-default-theme:not([disabled]):focus .md-select-value, md-select:not
   padding:10px;
   transition: all 0.5s;
 }
-.dashboard-user-page .side-menu li:hover{
+.dashboard-user-page .side-menu li:hover,.side-menu .nav .active{
   color:#00c445;
   background: white;
+}
+.dashboard-user-page .side-menu li:focus{
+  outline: none;
 }
 .dashboard-user-page .side-menu li .fa{
   font-size: 22px;

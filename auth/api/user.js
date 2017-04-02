@@ -204,24 +204,24 @@ router.post('/user/login', function(req, res, next) {
   basicUser.getAuthenticated(req.body.username,req.body.password,function(err,user,reason){
 
     if (err){
-      return res.status(500).send(utils.generateErrorInfo('Login not successful',500,null));
+      return res.status(500).send(utils.generateErrorInfo('Login not successful',500,err));
 
     }
 
     if (!user) {
-      res.status(403).send(utils.generateErrorInfo('Login not successful',403,null));
+      res.status(403).send(utils.generateErrorInfo(reason,403,null));
     }
 
     if (user) {
       user.password = null;
       var token = Token.generateToken(user);
 
-      res.status(200).send(utils.generateSuccessInfo('Login successfull',200,{token:token}));
+      res.status(200).send(utils.generateSuccessInfo('Login successfull',200,{token:token,user:user}));
     }
   })
 
 });
-router.post('/user/login/resend', function(req, res, next) {
+router.post('/user/register/resend', function(req, res, next) {
 
   if(req.body.email){
       EmailVerification.resendVerificationEmail(req.body.email,res)
