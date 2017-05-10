@@ -1,3 +1,7 @@
+/***************************
+  Authentication Service
+****************************/
+
 app.factory("AuthService", function($http, $q, $window,Config,$localstorage,$location,jwtHelper,$rootScope) {
   var userInfo;
   var call;
@@ -69,13 +73,13 @@ app.factory("AuthService", function($http, $q, $window,Config,$localstorage,$loc
 
   function authenticate(accountType){
     //Authentication logic here
-    console.log(accountType);
+
     var token = $localstorage.get('xoof_token');
 
     if(token){
       var tokenPayload = jwtHelper.decodeToken(token);
       var user = $localstorage.getObject('xoof_user');
-      console.log(user);
+
       if(!jwtHelper.isTokenExpired(token)){
           //If authenticated, return anything you want, probably a user object
           if(user.username === tokenPayload._doc.username && user.accountType === accountType){
@@ -112,4 +116,19 @@ app.factory("AuthService", function($http, $q, $window,Config,$localstorage,$loc
     authenticate: authenticate,
     logout: logout
   };
+});
+
+
+/*************************************************
+                        API
+***************************************************/
+
+//-----------------> Offer Service
+
+app.factory('OfferService', function($resource,Config) {
+
+	return   $resource(Config.api.offer+'/api/offer', {}, {
+    	'create': {method: 'POST', isArray: false}
+	});
+
 });

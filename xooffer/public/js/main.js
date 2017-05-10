@@ -1,5 +1,5 @@
 
-var app = angular.module("app", ['ngRoute','slick','ngAnimate','ngAria','ngMessages','ngMaterial','angular-jwt']);
+var app = angular.module("app", ['ngRoute','slick','ngAnimate','ngResource','ngAria','ngMessages','ngMaterial','angular-jwt']);
 
 app.config(function($routeProvider,$locationProvider) {
     $routeProvider

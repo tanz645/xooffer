@@ -2,7 +2,7 @@
   <h2>Create New Offer</h2>
 </div>
 <div class="body col-sm-6">
-  <form name="offerForm">
+  <form name="offerForm" ng-submit="submit(offerForm.$valid)">
     <div class="row">
       <div class="col-sm-4">
         <md-input-container class="fullWidth">
@@ -14,7 +14,7 @@
         </md-input-container>
       </div>
     </div>
-    <div ng-repeat="i in outlets" class="row">
+    <div ng-repeat="i in outlets">
       <div class="row">
         <div class="col-sm-4">
           <md-input-container class="fullWidth">
@@ -52,7 +52,25 @@
           <md-input-container class="fullWidth">
             <label>Area</label>
             <input required name="area" ng-model="i.area">
-            <div ng-messages="i.address.$error">
+            <div ng-messages="i.area.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div class="col-sm-4">
+          <md-input-container class="fullWidth">
+            <label>Latitude</label>
+            <input required name="lat" ng-model="i.lat">
+            <div ng-messages="i.lat.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div class="col-sm-4">
+          <md-input-container class="fullWidth">
+            <label>Longitude</label>
+            <input required name="lng" ng-model="i.lng">
+            <div ng-messages="i.lng.$error">
               <div ng-message="required">This is required.</div>
             </div>
           </md-input-container>
@@ -70,6 +88,15 @@
     <div class="row">
       <div class="col-sm-4">
         <md-input-container class="fullWidth">
+          <label>Brand ID</label>
+          <input required disabled name="brandId" ng-model="offer.brandId">
+          <div ng-messages="offerForm.brandId.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div class="col-sm-4">
+        <md-input-container class="fullWidth">
           <label>Primary Category</label>
           <md-select name="primaryCategory" ng-model="offer.primaryCategory" required>
               <md-option value="demo1">demo1</md-option>
@@ -80,8 +107,6 @@
           </div>
         </md-input-container>
       </div>
-    </div>
-    <div class="row">
       <div class="col-sm-4">
         <md-input-container class="fullWidth">
           <label>Sub Category</label>
@@ -94,7 +119,7 @@
           </div>
         </md-input-container>
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-12">
         <md-input-container class="fullWidth">
           <label>Offer Description</label>
           <input md-maxlength="100" required md-no-asterisk name="description" ng-model="offer.description">
@@ -106,14 +131,14 @@
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <md-input-container class="fullWidth">
+        <md-input-container class="fullWidth" ng-repeat="i in productDetails">
           <label>Product Details</label>
-          <input name="district" ng-model="productDetails.i" ng-repeat="i in productDetails">
+          <input name="district" ng-model="productDetails.i">
         </md-input-container>
       </div>
       <div class="col-sm-6">
-        <md-button class="ripple xo-btn"> + Add</md-button>
-        <md-button class="ripple md-warn xo-btn"> - Remove</md-button>
+        <md-button class="ripple xo-btn" ng-click="addProductDetails()"> + Add</md-button>
+        <md-button class="ripple md-warn xo-btn" ng-click="removeProductDetails()"> - Remove</md-button>
       </div>
     </div>
     <div class="row">
@@ -132,7 +157,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <md-button class="ripple xo-btn primary"> Save Offer</md-button>
+        <md-button class="ripple xo-btn primary" type="submit"> Save Offer</md-button>
       </div>
     </div>
   </form>

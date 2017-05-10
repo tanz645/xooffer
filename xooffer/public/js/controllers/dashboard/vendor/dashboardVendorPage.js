@@ -1,12 +1,14 @@
 'user strict';
-app.controller('DashboardVendorPageController', function($scope,$timeout) {
+app.controller('DashboardVendorPageController', function($scope,$timeout,$localstorage,OfferService) {
   $scope.num = [1,2,3,4,5,6,7,8];
   $scope.brands = ['1.png','2.jpg','3.png','4.jpeg','5.jpeg','6.jpg','7.png','8.png'];
   $scope.brandName = ['Adidas','Nike','Loreal','Macdonalds','KFC','Apex','Bata','Georgio Armani'];
   $scope.setAllOffers = true;
   $scope.setCreateOffer = false;
   $scope.productDetails = [{}];
-  $scope.outlets = [{country:"",area:"",address:"",shoppingMall:"",lat:"",lng:""}];
+  $scope.offer = {};
+  $scope.offer.brandId = $localstorage.getObject('xoof_user')._id;
+  $scope.outlets = [{feature:""}];
   /***********************************
       Change the view for dashboard
   ***********************************/
@@ -43,12 +45,9 @@ app.controller('DashboardVendorPageController', function($scope,$timeout) {
     Add and remove offer location
   ***************************************/
 
-  // add
-
   $scope.addLocation = function(){
 
     $scope.outlets.push({country:"",area:"",address:"",shoppingMall:"",lat:"",lng:""});
-    console.log($scope.outlets);
   }
   $scope.removeLocation = function(){
 
@@ -58,4 +57,29 @@ app.controller('DashboardVendorPageController', function($scope,$timeout) {
 
   }
 
+  /**************************************
+    Add and remove Product Details
+  ***************************************/
+  $scope.addProductDetails = function(){
+
+    $scope.productDetails.push({feature:""});
+  }
+  $scope.removeProductDetails = function(){
+
+    if($scope.productDetails.length>1){
+      $scope.productDetails.pop();
+    }
+
+  }
+  /*********************
+      Create Offer
+  **********************/
+  $scope.submit = function(valid){
+    console.log($scope.outlets);
+    console.log($scope.offer);
+
+    OfferService.create().$promise.then(function(res){
+      console.log(res);
+    })
+  }
 });

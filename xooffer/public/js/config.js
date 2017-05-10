@@ -7,6 +7,9 @@ app.factory("Config", function($http, $q, $window) {
       basic:'BASIC',
       admin:'ADMIN',
       vendor:'VENDOR'
+    },
+    api:{
+      offer:'http://localhost:3010'
     }
   };
 });

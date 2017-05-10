@@ -12,16 +12,16 @@ var BasicOfferSchema = new Schema({
       country: {type: String, required: true},
       area: {type: String},
       address:{type: String, required: true},
-      shoppingMall:{type: String, required: true}
+      shoppingMall:{type: String, required: true},
       lat: {type: Number},
       lng: {type: Number}
     }],
   brandId: { type: String, required: true},
   offerDetails: { type: String, required: true},
-  productDetails: [{ type: String, required: true}],
+  productDetails: [{feature:{ type: String, required: true}}],
   primaryCategory: { type: String, required: true},
   subCategory: { type: String, required: true},
-  activated: {type: Boolean, default:false}
+  activated: {type: Boolean, default:false},
   offerEnding: Date,
   offerStarted: Date,
   created: {type: Date, default: Date.now},

@@ -7,7 +7,7 @@
 body{
   color: #404040;
   position: relative;
-  background: #EEEEEE;
+  background: #66BB6A;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -930,7 +930,7 @@ md-select.md-default-theme:not([disabled]):focus .md-select-value, md-select:not
   left:0;
   top:101px;
   width: 200px;
-  background: linear-gradient(to right, #2ea065 , #44ac0b, #00c445);
+  background: #00C853;
   height: 95%;
 }
 .dashboard-user-page .side-menu li{
